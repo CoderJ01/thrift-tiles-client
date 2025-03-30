@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Thrift Tiles</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+        <link rel="stylesheet" href="assets/css/styles.css">
+        <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+        <script type="module">
+            // file imports
+            import Cookie from '../client/utils/cookie.js';
+            // if no user is logged in, redirect to homepage
+            if(Cookie.checkCookie() == null || Cookie.checkCookie() == undefined || Cookie.checkCookie() == '') {
+                window.location.href = "http://127.0.0.1:5500/client/index.html";
+            }
+        </script>
+    </head>
+    <body class="signup login update">
+        <nav class="nav-signup nav-login">
+            <div class="nav-center-signup">
+                <!-- placeholder section to even out spacing of header contents -->
+                <div class="cart-btn signup-area useless-button">
+                    <span class="nav-icon">
+                        <a class="signup-instead" href="signup.html">Home</a>
+                    </span>
+                </div>
+                <!-- end of placeholder -->
+                <img src="images/Thrift-Tiles-logo.png" alt="insert Thrift Tiles logo here">
+                <div class="cart-btn signup-area">
+                    <span class="nav-icon">
+                        <a class="signup-instead" href="index.html">Home</a>
+                    </span>
+                </div>
+            </div>
+        </nav>
+        <section>
+            <div class="signup-form-container">
+                <form id="update-form">
+                    <br> 
+
+                    <label for="email">Email:</label><br>
+                    <input type="email" id="email" name="email"><br><br>
+
+                    <label for="password">Old password:</label><br>
+                    <input type="password" id="password" name="password"><br><br>
+
+                    <label for="npassword">New password:</label><br>
+                    <input type="password" id="npassword" name="npassword"><br><br>
+
+                    <button>Update</button><br><br>
+                </form>
+            </div>
+        </section>
+    </body>
+    <script type="module" src="assets/js/update.js"></script>
+</html>
