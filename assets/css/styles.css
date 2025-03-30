@@ -1,0 +1,606 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700");
+
+:root {
+  --primaryColor: #52a6f9;
+  --mainWhite: #fff;
+  --mainBlack: #222;
+  --mainGrey: #36454F;
+  --mainSpacing: 0.1rem;
+  --mainTransition: all 0.3s linear;
+}
+* {
+	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+	background: var(--mainWhite);
+  color: var(--mainBlack);
+  font-family: "Lato", sans-serif;
+}
+
+/* --------------- Navbar ---------------- */
+.navbar {
+    background: #aeb6bf;
+    height: 60px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  .navbar-center {
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  .navbar {
+    align-items: center;
+    background: #aeb6bf;
+    display: flex;
+    height: 60px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  .navbar-center {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1170px;
+    padding: 0 1.5rem;
+    width: 100%;
+  }
+  .navbar-center img,
+  .nav-center-signup img {
+    width: 30%;
+  }
+  .nav-icon {
+    font-size: 1.5rem;
+  }
+  .cart-btn {
+    cursor: pointer;
+    position: relative;
+  }
+  .cart-items {
+    background: var(--primaryColor);
+    border-radius: 30%;
+    color: var(--mainWhite);
+    padding: 0 5px;
+    position: absolute;
+    right: -8px;
+    top: -8px;
+  }
+  /* --------------- End of Navbar ---------------- */
+  /* --------------- Hero ---------------- */
+.hero {
+    align-items: center;
+    background: url("../../images/tiles.jpg") center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    min-height: calc(100vh - 60px);
+  }
+  .banner {
+    background: rgba(255, 255, 255, 0.8);
+    display: inline-block;
+    max-width: 100%;
+    padding: 2rem;
+    text-align: center;
+  }
+  .banner-title {
+		color: black;
+    font-size: 3.4rem;
+    letter-spacing: var(--mainSpacing);
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+  }
+  .banner-btn {
+    background: var(--primaryColor);
+    border: 1px solid var(--primaryColor);
+    color: var(--mainBlack);
+    cursor: pointer;
+    font-size: 1rem;
+    letter-spacing: var(--mainSpacing);
+    padding: 1rem 3rem;
+    text-transform: uppercase;
+    transition: var(--mainTransition);
+  }
+  .banner-btn:hover {
+    background: transparent;
+    color: var(--primaryColor);
+  }
+  .banner-btn a {
+    color: var(--mainBlack);
+    text-decoration: none; 
+  }
+  .banner-btn a:hover {
+    text-decoration: none; 
+  }
+  /* --------------- End of Hero ---------------- */
+  /* --------------- Products ---------------- */
+
+.products {
+  padding: 4rem 0;
+}
+.section-title h2 {
+  font-size: 2.5rem;
+  letter-spacing: var(--mainSpacing);
+  margin-bottom: 5rem;
+  text-align: center;
+  text-transform: capitalize;
+}
+.products-center {
+  display: grid;
+  margin: 0 auto;
+  max-width: 1170px;
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  width: 90vw;
+}
+.img-container {
+  overflow: hidden;
+  position: relative;
+}
+.bag-btn {
+  background: var(--primaryColor);
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: var(--mainSpacing);
+  padding: 0.5rem 0.75rem;
+  position: absolute;
+  right: 0;
+  text-transform: uppercase;
+  top: 70%;
+  transform: translateX(101%);
+  transition: var(--mainTransition);
+}
+.bag-btn:hover {
+  color: var(--mainWhite);
+}
+.fa-shopping-cart {
+  margin-right: 0.5rem;
+}
+.img-container:hover .bag-btn {
+  transform: translateX(0);
+}
+.product-img {
+  display: block;
+  min-height: 12rem;
+  transition: var(--mainTransition);
+  width: 100%;
+}
+.img-container:hover .product-img {
+  opacity: 0.5;
+}
+
+.product h3 {
+  font-size: 1.1rem;
+  letter-spacing: var(--mainSpacing);
+  margin-top: 1rem;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.product h4 {
+  color: var(--primaryColor);
+  letter-spacing: var(--mainSpacing);
+  margin-top: 0.7rem;
+  text-align: center;
+}
+
+/* ---------------End of Products ---------------- */
+/* --------------- Cart ---------------- */
+.cart-overlay {
+  background: rgb(240, 157, 81, 0.5);
+  height: 100%;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: var(--mainTransition);
+  visibility: hidden;
+  width: 100%;
+  z-index: 2;
+}
+.cart {
+  background: rgb(231, 226, 221);
+  height: 100%;
+  overflow: scroll;
+  padding: 1.5rem;
+  position: fixed;
+  right: 0;
+  top: 0;
+  transition: var(--mainTransition);
+  transform: translateX(100%);
+  width: 100%;
+  z-index: 3;
+}
+.showCart {
+  transform: translateX(0);
+}
+.transparentBcg {
+  visibility: visible;
+}
+@media screen and (min-width: 768px) {
+  .cart {
+    min-width: 450px;
+    width: 30vw;
+  }
+}
+.close-cart {
+  cursor: pointer;
+  font-size: 1.7rem;
+}
+.cart h2 {
+  letter-spacing: var(--mainSpacing);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+/*---------- Cart Item -------------------- */
+.cart-item {
+  align-items: center;
+  display: grid;
+  grid-column-gap: 1.5rem;
+  grid-template-columns: auto 1fr auto;
+  margin: 1.5rem 0;
+}
+.cart-item img {
+  height: 75px;
+  width: 75px;
+}
+.cart-item h4 {
+  font-size: 0.85rem;
+  letter-spacing: var(--mainSpacing);
+  text-transform: capitalize;
+}
+.cart-item h5 {
+  letter-spacing: var(--mainSpacing);
+  margin: 0.5rem 0;
+}
+.item-amount {
+  text-align: center;
+}
+.remove-item {
+  color: grey;
+  cursor: pointer;
+}
+.fa-chevron-up,
+.fa-chevron-down {
+  color: var(--primaryColor);
+  cursor: pointer;
+}
+/* desktop view */
+@media screen and (min-width: 981px) {
+  .useless-button {
+    visibility: hidden;
+  }
+}
+/* mobile view */
+@media screen and (max-width: 980px) {
+  .useless-button {
+    display: none;
+  }
+  .navbar-center img,
+  .nav-center-signup img {
+    width: 80%;
+  }
+
+  .navbar {
+    min-height: 90px;
+    padding-bottom: 0;
+  }
+
+  .navbar-center {
+    flex-direction: column;
+  }
+
+  .navbar-center img {
+    margin-top: 2vh;
+  }
+
+  .cart-btn {
+    margin-top: 1vh;
+  }
+}
+/*---------- End of Cart Item -------------------- */
+
+.cart-footer {
+  letter-spacing: var(--mainSpacing);
+  margin-top: 2rem;
+  text-align: center;
+}
+.cart-footer h3 {
+  margin-bottom: 1rem;
+  text-transform: capitalize; 
+}
+/* --------------- End of Cart ---------------- */
+
+/* PAGE */
+/* --------------- Sign Up ---------------- */
+.signup-instead {
+  color: black; 
+  text-decoration: none;
+}
+.signup-instead:hover {
+  color: #3468c1; 
+}
+.signup-instead:active {
+  opacity: 0.6;
+}
+
+.signup {
+  background-image: url("../../images/tiles-and-sunlight.jpg");
+  background-size: 1500px 1000px;
+}
+
+.signup-form-container {
+  animation: fadeIn 2s forwards;
+  margin-left: 37%;
+  margin-top: 4vh;
+  width: 26%;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.signup-form-container form {
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+label, 
+input {
+  font-size: 20px;
+  margin-left: 5%;
+  width: 90%;
+}
+
+#login-form button,
+#signup-form button,
+#update-form button,
+#create-product button {
+  background: rgb(82,166,249);
+  background: linear-gradient(90deg, rgba(82,166,249,1) 0%, rgba(234,236,238,1) 50%, rgba(82,166,249,1) 100%);
+  border: transparent;
+  border-radius: 10px;
+  font-weight: bold;
+  margin-left: 35%;
+  padding: 10px;
+  width: 30%;
+}
+
+#login-form button:hover,
+#signup-form button:hover,
+#update-form button:hover,
+#create-product button:hover {
+  background: rgb(54, 69, 79);
+  background: linear-gradient(90deg, rgba(54, 69, 79, 1) 0%, rgba(82, 166, 249, 1) 50%, rgba(54, 69, 79, 1) 100%);
+}
+
+#login-form button:active,
+#signup-form button:active,
+#update-form button:active,
+#create-product button:active {
+  opacity: 0.6;
+}
+
+.nav-signup {
+  background: #aeb6bf;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* desktop */
+@media screen and (min-width: 981px) {
+  .nav-icon {
+    min-width: 100px;
+    border: 1px solid green;
+  }
+  .nav-signup {
+    align-items: center;
+    display: flex;
+    height: 60px;
+  }
+  .nav-center-signup {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1170px;
+    padding: 0 1.5rem;
+    width: 100%;
+  }
+  .mobile-logout {
+    display: none;
+  }
+}
+
+/* mobile view */
+@media screen and (max-width: 980px) {
+  .navbar,
+  .nav-signup {
+    padding-bottom: 2vh;
+  }
+  .fafabars-sign {
+    display:none;
+  }
+  .nav-signup {
+    /* padding: 5px; */
+    width: 100%;
+  }
+  .nav-center-signup {
+    display: block;
+  }
+  .nav-center-signup img {
+    margin-left: 10%;
+    width: 80%;
+  }
+  .signup-area {
+    text-align: center;
+  }
+  .signup {
+    background-size: 3000px 2000px;
+  }
+  .signup-form-container {
+    margin-left: 5%;
+    margin-top: 2vh;
+    width: 90%;
+  }
+  .logout {
+    display: none;
+  }
+}
+/* --------------- End of Sign Up ---------------- */
+/* END PAGE */
+
+/* PAGE */
+/* --------------- Login ---------------- */
+.nav-login {
+  background-color: #34495e;
+}
+
+.nav-login a {
+  color: white;
+}
+.login {
+  background-image: url("../../images/diamond-tiles.jpg");
+  background-size: 1500px 1000px;
+}
+/* --------------- End of Login ---------------- */
+/* END PAGE */
+
+/* PAGE */
+/* --------------- Create Product ---------------- */
+.remove {
+  color: red; 
+  font-weight: bold; 
+  text-align: center
+}
+.remove:hover {
+  color: gray;
+  cursor: pointer;
+}
+.remove:active {
+  opacity: 0.5;
+}
+/* --------------- End of Create Product ---------------- */
+/* END PAGE */
+
+/* PAGE */
+/* --------------- Checkout ---------------- */
+.nav-login {
+  background-color: #34495e;
+}
+
+.nav-login a {
+  color: white;
+}
+
+.checkout-items {
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#checkout-form {
+  border: 2px solid blue;
+}
+
+#checkout-form button img {
+  width: 10%;
+}
+
+.checkout {
+  background-image: url("../../images/interior-tiles.jpg");
+  background-position: top;
+  background-size: 1375px 1000px;
+}
+
+.checkout-item {
+  background-color: #C0C0C0;
+  box-shadow: rgba(0, 48, 135, 0.25) 0px 13px 27px -5px, rgba(0, 48, 135, 0.3) 0px 8px 16px -8px;
+  margin-left: 5%;
+  padding: 10px;
+  width: 90%;
+}
+
+.checkout-total {
+  color: #003087;
+  font-size: 20px;
+  font-weight: bold; 
+  text-align: center
+}
+
+#checkout-form button {
+  background-color: #ffc53a;
+  border: #000000 0px solid;
+  cursor : pointer;
+	font: bold 14px arial, serif;
+	text-align: center;
+	/* CORNER ROUNDING */
+  border-radius: 30px;
+  -khtml-border-radius: 30px;
+	-moz-border-radius: 30px;
+	-webkit-border-radius: 30px;
+}
+
+#checkout-form button:hover {
+  background-color: #ededed;
+}
+
+#checkout-form button:active {
+  opacity: 0.8;
+}
+
+#checkout-form button img {
+  height: 65px;
+  width: 30%;
+}
+
+/* desktop */
+@media screen and (min-width: 981px) {
+  .checkout-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 10vh;
+  }
+
+  .checkout-items {
+    width: 35%;
+  }
+  
+  #checkout-form {
+    width: 50%;
+  }
+
+  .checkout-items,
+  #checkout-form {
+    min-height: 70vh;
+  }
+
+  #checkout-form button {
+    margin-left: 10%;
+    width: 80%;
+  }
+}
+
+/* mobile */
+@media screen and (max-width: 980px) {
+  .checkout-items {
+    margin-left: 3%;
+    margin-top: 4vh;
+    padding: 2vh 2vh;
+    width: 94%;
+  }
+  #checkout-form {
+    margin-top: 2vh;
+  }
+  #checkout-form button {
+    margin-left: 10%;
+    width: 80%;
+  }
+}
+/* --------------- End of Update ---------------- */
+/* END PAGE */
