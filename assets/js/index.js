@@ -1,5 +1,6 @@
 // file imports
 import Cookie from '../../utils/cookie.js';
+import { frontendURL } from '../../utils/url.js';
 
 // variables
 const cartBtn = document.querySelector(".cart-btn");
@@ -157,7 +158,7 @@ class UI {
             }
             button.addEventListener("click", event => {
                 if(Cookie.checkCookie() == null) {
-                    window.location.href = "http://127.0.0.1:5500/client/login.html";
+                    window.location.href = `${frontendURL}/client/login.html`;
                     return;
                 }
                 event.target.innerText = "In Cart";
@@ -330,7 +331,7 @@ mobileLogout.addEventListener("click", () => {
 
 checkout.addEventListener("click", () => {
     localStorage.setItem("cartItems", JSON.stringify(itemsInCart));
-    window.location.href = "http://127.0.0.1:5500/client/checkout.html";
+    window.location.href = `${frontendURL}/client/checkout.html`;
 });
 
 getUser();
