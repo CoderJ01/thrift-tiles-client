@@ -161,7 +161,7 @@ class UI {
             }
             button.addEventListener("click", event => {
                 if(Cookie.checkCookie() == null) {
-                    window.location.href = `${frontendURL}/client/login.html`;
+                    window.location.href = `${frontendURL}/login.html`;
                     return;
                 }
                 event.target.innerText = "In Cart";
@@ -335,7 +335,7 @@ mobileLogout.addEventListener("click", () => {
 // redirect user to checkout page 
 checkout.addEventListener("click", () => {
     localStorage.setItem("cartItems", JSON.stringify(itemsInCart));
-    window.location.href = `${frontendURL}/client/checkout.html`;
+    window.location.href = `${frontendURL}/checkout.html`;
 });
 
 getUser();
