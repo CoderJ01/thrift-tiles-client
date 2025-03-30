@@ -9,8 +9,8 @@
         <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
         <script type="module">
             // file imports
-            import Cookie from '../client/utils/cookie.js';
-            import { frontendURL } from '../client/utils/url.js';
+            import Cookie from '../utils/cookie.js';
+            import { frontendURL } from '../utils/url.js';
             // if no user is logged in, redirect to homepage
             if(Cookie.checkCookie() == null || Cookie.checkCookie() == undefined || Cookie.checkCookie() == '') {
                 window.location.href = `${frontendURL}/index.html`;
@@ -39,7 +39,7 @@
             <div class="checkout-items"></div>
             <form id="checkout-form"> 
                 <!-- PayPal button -->
-                <button id="purchase-items"><img src="../client/images/PayPal-label.png" alt=""></button>
+                <button id="purchase-items"><img src="../images/PayPal-label.png" alt=""></button>
             </form>
         </section>
     </body>

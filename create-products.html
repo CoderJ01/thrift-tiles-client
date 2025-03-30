@@ -9,8 +9,8 @@
         <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
         <script type="module">
             // file imports
-            import Cookie from '../client/utils/cookie.js';
-            import { frontendURL, backendURL } from '../client/utils/url.js';
+            import Cookie from '../utils/cookie.js';
+            import { frontendURL, backendURL } from '../utils/url.js';
 
             let userCookie = Cookie.checkCookie();
             const username = userCookie.substring(userCookie.indexOf('@')).substring(1);

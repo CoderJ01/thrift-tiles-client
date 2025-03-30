@@ -8,8 +8,8 @@
         <link rel="stylesheet" href="assets/css/styles.css">
         <script type="module">
             // file imports
-            import Cookie from '../client/utils/cookie.js';
-            import { frontendURL } from '../client/utils/url.js';
+            import Cookie from '../utils/cookie.js';
+            import { frontendURL } from '../utils/url.js';
             // if user is already logged in, redirect user to homepage
             if(Cookie.checkCookie() != null) {
                 window.location.href = `${frontendURL}/index.html`;
