@@ -36,7 +36,6 @@ function smoothScroll(ourProducts) {
         });
     }
 }
-  
 document.querySelectorAll('button[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -57,10 +56,12 @@ const getUser = async () => {
         username = userCookie.substr(userCookie.indexOf('@')).substring(1);
     }
 
+    // get the user from the backend
     const getUser = await axios.get(`https://thrift-tiles-store-server.onrender.com/api/users/cookie/${username}/${storedCookie}`)
     .then(response => {
         user = response.data.data;
       
+        // alter navigation if user is not logged on (i.e. there is no cookie)
         if(user == null || user == undefined || user == '') {
             navigation.removeChild(navbar);
             let defaultNav = document.createElement('nav');
@@ -102,11 +103,13 @@ const getUser = async () => {
     });
 }
 
+// get prouducts
 class Products {
     async getProducts() {
         try {
-            // let result = await fetch('products.json');
+            // get products from backend
             let response = await axios.get('https://thrift-tiles-store-server.onrender.com/api/products');
+
             let products = response.data;
             products = products.map(item => {
                 const id = item.id;
@@ -321,14 +324,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });  
 });
 
+// remove cookie when user logs out
 logout.addEventListener("click", () => {
     Cookie.removeCookie();
 });
-
 mobileLogout.addEventListener("click", () => {
     Cookie.removeCookie();
 });
 
+// redirect user to checkout page 
 checkout.addEventListener("click", () => {
     localStorage.setItem("cartItems", JSON.stringify(itemsInCart));
     window.location.href = `${frontendURL}/client/checkout.html`;

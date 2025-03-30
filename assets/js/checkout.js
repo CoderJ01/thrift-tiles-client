@@ -24,11 +24,14 @@ div.innerHTML = result + `<div class="checkout-total">Total: $${total}</div>`;
 checkoutItems.appendChild(div);
 
 purchase.addEventListener("click", event => {
+    // prevent purchase if no user is logged
     if(Cookie.checkCookie() == null || Cookie.checkCookie == undefined || Cookie.checkCookie == '') {
         alert('No user is logged on!');
         return;
     }
+
     event.preventDefault();
+
     axios.post('https://thrift-tiles-store-server.onrender.com/api/payment/purchase', {
         items: JSON.parse(itemsInCart),
         total: total

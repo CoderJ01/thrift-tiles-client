@@ -88,6 +88,7 @@ function validatePassword(password) {
 document.querySelector('#update-form').addEventListener('submit', function(event) {
     event.preventDefault();
 
+    // prohibit update if user is not logged in
     if(Cookie.checkCookie() == null || Cookie.checkCookie == undefined || Cookie.checkCookie() == '') {
         alert('No user is logged in!');
         return;

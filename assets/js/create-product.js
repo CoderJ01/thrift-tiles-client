@@ -3,7 +3,6 @@ import Cookie from '../../utils/cookie.js';
 
 const productsDisplayArea = document.querySelector('.products-center');
 
-
 let errorMessage = document.createElement("div");
 document.querySelector('#create-product').appendChild(errorMessage);
 errorMessage.style.textAlign = 'center';
@@ -20,8 +19,6 @@ document.querySelector('#create-product').addEventListener('submit', function(ev
     let amount = document.querySelector('#amount').value;
     let image = document.querySelector('#image').value;
 
-    console.log(name, cost, amount, image);
-
     if(name === '' || cost === '' || amount === '' || image === '') 
     {
         displayMessage("All fields must be filled in!");
@@ -31,8 +28,10 @@ document.querySelector('#create-product').addEventListener('submit', function(ev
     let userCookie = Cookie.checkCookie();
     const username = userCookie.substring(userCookie.indexOf('@')).substring(1);
     
+    // get user from backend
     const getUser = axios.get(`https://thrift-tiles-store-server.onrender.com/api/users/name/${username}`)
     .then(response => {
+        // if the user is not an admin, prevent creation of new product
         if(response.data.admin !== true) {
             alert('Unauthorized request! Only administrators can create products!');
             return;
@@ -57,6 +56,7 @@ document.querySelector('#create-product').addEventListener('submit', function(ev
     );
 });
 
+// list formerly created products from the backend
 const productList = await axios.get('https://thrift-tiles-store-server.onrender.com/api/products/')
 .then(response => {
     let display = "";
@@ -79,6 +79,7 @@ const productList = await axios.get('https://thrift-tiles-store-server.onrender.
     productsDisplayArea.innerHTML = display;
     
     const removeButtons = document.querySelectorAll('.remove');
+
     removeButtons.forEach(button => {
         button.addEventListener("click", () => {
             // ensure that a site user is logged in before a product is deleted
@@ -93,6 +94,7 @@ const productList = await axios.get('https://thrift-tiles-store-server.onrender.
             const getUser = axios.get(`https://thrift-tiles-store-server.onrender.com/api/users/name/${username}`)
             .then(response => {
                 if(response.data.admin === true) {
+                    // delete product if user is an admin
                     axios.delete(`https://thrift-tiles-store-server.onrender.com/api/products/${button.id}`);
                 }
                 else {
