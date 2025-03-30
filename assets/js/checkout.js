@@ -1,5 +1,6 @@
 // file imports
 import Cookie from '../../utils/cookie.js';
+import { backendURL } from '../../utils/url.js';
 
 const checkoutItems = document.querySelector(".checkout-items");
 const itemsInCart = localStorage.getItem("cartItems");
@@ -32,7 +33,7 @@ purchase.addEventListener("click", event => {
 
     event.preventDefault();
 
-    axios.post('https://thrift-tiles-store-server.onrender.com/api/payment/purchase', {
+    axios.post(`${backendURL}/api/payment/purchase`, {
         items: JSON.parse(itemsInCart),
         total: total
     })

@@ -1,5 +1,6 @@
 // file imports
 import Cookie from '../../utils/cookie.js';
+import { backendURL } from '../../utils/url.js';
 
 // To prevent event handler conflict, this 'submit' event has been placed in its own page
 let errorMessage = document.createElement("div");
@@ -117,9 +118,9 @@ document.querySelector('#update-form').addEventListener('submit', function(event
         };
     }
 
-    const getUser = axios.get(`https://thrift-tiles-store-server.onrender.com/api/users/name/${username}`)
+    const getUser = axios.get(`${backendURL}/api/users/name/${username}`)
     .then(user => {
-        axios.put(`https://thrift-tiles-store-server.onrender.com/api/users/update/${user.data.username}`, 
+        axios.put(`${backendURL}/api/users/update/${user.data.username}`, 
         {
             email: email,
             oldPassword: oldPassword,

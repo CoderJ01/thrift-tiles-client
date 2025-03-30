@@ -10,13 +10,13 @@
         <script type="module">
             // file imports
             import Cookie from '../client/utils/cookie.js';
-            import { frontendURL } from '../client/utils/url.js';
+            import { frontendURL, backendURL } from '../client/utils/url.js';
 
             let userCookie = Cookie.checkCookie();
             const username = userCookie.substring(userCookie.indexOf('@')).substring(1);
             
             // if user is not an administrator, redirect to the homepageS
-            const getUser = axios.get(`https://thrift-tiles-store-server.onrender.com/api/users/name/${username}`)
+            const getUser = axios.get(`${backendURL}/api/users/name/${username}`)
             .then(response => {
                 if(response.data.admin !== true) {
                     alert('Only authorized users are allowed on this page!');

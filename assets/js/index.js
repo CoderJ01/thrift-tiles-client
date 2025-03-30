@@ -1,6 +1,6 @@
 // file imports
 import Cookie from '../../utils/cookie.js';
-import { frontendURL } from '../../utils/url.js';
+import { frontendURL, backendURL } from '../../utils/url.js';
 
 // variables
 const cartBtn = document.querySelector(".cart-btn");
@@ -57,7 +57,7 @@ const getUser = async () => {
     }
 
     // get the user from the backend
-    const getUser = await axios.get(`https://thrift-tiles-store-server.onrender.com/api/users/cookie/${username}/${storedCookie}`)
+    const getUser = await axios.get(`${backendURL}/api/users/cookie/${username}/${storedCookie}`)
     .then(response => {
         user = response.data.data;
       
@@ -108,7 +108,7 @@ class Products {
     async getProducts() {
         try {
             // get products from backend
-            let response = await axios.get('https://thrift-tiles-store-server.onrender.com/api/products');
+            let response = await axios.get(`${backendURL}/api/products`);
 
             let products = response.data;
             products = products.map(item => {

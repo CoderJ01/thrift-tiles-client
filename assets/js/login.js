@@ -1,5 +1,6 @@
 // file imports
 import Cookie from '../../utils/cookie.js';
+import { backendURL } from '../../utils/url.js';
 
 // To prevent event handler conflict, this 'submit' event has been placed in its own page
 let errorMessage = document.createElement("div");
@@ -22,7 +23,7 @@ document.querySelector('#login-form').addEventListener('submit', function(event)
         return;
     }
 
-    axios.post('https://thrift-tiles-store-server.onrender.com/api/users/login', {
+    axios.post(`${backendURL}/api/users/login`, {
         email: email,
         password: password
     })

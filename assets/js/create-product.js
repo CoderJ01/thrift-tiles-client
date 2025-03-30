@@ -1,5 +1,6 @@
 // file imports
 import Cookie from '../../utils/cookie.js';
+import { backendURL } from '../../utils/url.js';
 
 const productsDisplayArea = document.querySelector('.products-center');
 
@@ -29,7 +30,7 @@ document.querySelector('#create-product').addEventListener('submit', function(ev
     const username = userCookie.substring(userCookie.indexOf('@')).substring(1);
     
     // get user from backend
-    const getUser = axios.get(`https://thrift-tiles-store-server.onrender.com/api/users/name/${username}`)
+    const getUser = axios.get(`${backendURL}/api/users/name/${username}`)
     .then(response => {
         // if the user is not an admin, prevent creation of new product
         if(response.data.admin !== true) {
@@ -38,7 +39,7 @@ document.querySelector('#create-product').addEventListener('submit', function(ev
         }
     });
 
-    axios.post('https://thrift-tiles-store-server.onrender.com/api/products/', {
+    axios.post(`${backendURL}/api/products/`, {
         name: name,
         cost: cost,
         amount: amount,
@@ -57,7 +58,7 @@ document.querySelector('#create-product').addEventListener('submit', function(ev
 });
 
 // list formerly created products from the backend
-const productList = await axios.get('https://thrift-tiles-store-server.onrender.com/api/products/')
+const productList = await axios.get(`${backendURL}/api/products/`)
 .then(response => {
     let display = "";
     let products = response.data;
@@ -91,11 +92,11 @@ const productList = await axios.get('https://thrift-tiles-store-server.onrender.
             let userCookie = Cookie.checkCookie();
             const username = userCookie.substring(userCookie.indexOf('@')).substring(1);
             
-            const getUser = axios.get(`https://thrift-tiles-store-server.onrender.com/api/users/name/${username}`)
+            const getUser = axios.get(`${backendURL}/api/users/name/${username}`)
             .then(response => {
                 if(response.data.admin === true) {
                     // delete product if user is an admin
-                    axios.delete(`https://thrift-tiles-store-server.onrender.com/api/products/${button.id}`);
+                    axios.delete(`${backendURL}/api/products/${button.id}`);
                 }
                 else {
                     alert('Unauthorized request! Only administrators can delete products!');
