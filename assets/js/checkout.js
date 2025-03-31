@@ -43,7 +43,7 @@ purchase.addEventListener("click", event => {
         return;
     }
 
-    axios.post(`${backendURL}/api/payment/purchase`, {
+    axios.post(`${backendURL}/api/purchase-items/checkout`, {
         items: JSON.parse(itemsInCart),
         total: total
     })
