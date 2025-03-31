@@ -1,5 +1,5 @@
 // imports
-import { backendURL } from "../../utils/url";
+import { backendURL } from "../../utils/url.js";
 
 // To prevent event handler conflict, this 'submit' event has been placed in its own page
 let errorMessage = document.createElement("div");
