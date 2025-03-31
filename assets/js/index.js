@@ -24,8 +24,6 @@ const checkout = document.querySelector(".checkout-cart");
 let cart = [];
 // buttons
 let buttonsDOM = [];
-// items in cart
-let itemsInCart = [];
 
 // smooth scroll down 
 function smoothScroll(ourProducts) {
@@ -208,7 +206,6 @@ class UI {
             </div>
         `;
         cartContent.appendChild(div);
-        itemsInCart.push(item);
     }
     showCart() {
         cartOverlay.classList.add('transparentBcg');
@@ -249,16 +246,12 @@ class UI {
                 Storage.saveCart(cart);
                 this.setCartValues(cart);
                 addAmount.nextElementSibling.innerText = tempItem.amount;
-                let addToItem = itemsInCart.find(item => item.id === id);
-                addToItem.amount = addToItem.amount;
             }
             else if(event.target.classList.contains("fa-chevron-down")){
                 let lowerAmount = event.target;
                 let id = lowerAmount.dataset.id;
                 let tempItem = cart.find(item => item.id === id);
                 tempItem.amount = tempItem.amount - 1;
-                let subtractFromItem = itemsInCart.find(item => item.id === id);
-                subtractFromItem.amount = subtractFromItem.amount;
                 if(tempItem.amount > 0) {
                     Storage.saveCart(cart);
                     this.setCartValues(cart);
@@ -277,7 +270,6 @@ class UI {
         while(cartContent.children.length > 0) {
             cartContent.removeChild(cartContent.children[0]);
         }
-        localStorage.removeItem('cartItems');
         this.hideCart();
     }
     removeItem(id) {
@@ -327,15 +319,16 @@ document.addEventListener("DOMContentLoaded", () => {
 // remove cookie when user logs out
 logout.addEventListener("click", () => {
     Cookie.removeCookie();
+    localStorage.removeItem('cart');
 });
 mobileLogout.addEventListener("click", () => {
     Cookie.removeCookie();
+    localStorage.removeItem('cart');
 });
 
 // redirect user to checkout page 
 checkout.addEventListener("click", () => {
-    if(itemsInCart.length >= 1) {
-        localStorage.setItem("cartItems", JSON.stringify(itemsInCart));
+    if(cart.length >= 1) {
         window.location.href = `${frontendURL}/checkout.html`;
     }
     else {
