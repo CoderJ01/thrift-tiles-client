@@ -334,8 +334,13 @@ mobileLogout.addEventListener("click", () => {
 
 // redirect user to checkout page 
 checkout.addEventListener("click", () => {
-    localStorage.setItem("cartItems", JSON.stringify(itemsInCart));
-    window.location.href = `${frontendURL}/checkout.html`;
+    if(itemsInCart.length >= 1) {
+        localStorage.setItem("cartItems", JSON.stringify(itemsInCart));
+        window.location.href = `${frontendURL}/checkout.html`;
+    }
+    else {
+        alert('You must have at least one item in the cart!');
+    }
 });
 
 getUser();
