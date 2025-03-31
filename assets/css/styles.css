@@ -501,10 +501,7 @@ input {
 .checkout-items {
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-
-#checkout-form {
-  border: 2px solid blue;
+  padding-bottom: 3vh;
 }
 
 #checkout-form button img {
@@ -515,6 +512,7 @@ input {
   background-image: url("../../images/interior-tiles.jpg");
   background-position: top;
   background-size: 1375px 1000px;
+  padding-bottom: 5vh;
 }
 
 .checkout-item {
@@ -602,5 +600,5 @@ input {
     width: 80%;
   }
 }
-/* --------------- End of Update ---------------- */
+/* --------------- End of Checkout ---------------- */
 /* END PAGE */
