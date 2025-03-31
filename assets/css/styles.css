@@ -473,6 +473,15 @@ input {
 
 /* PAGE */
 /* --------------- Create Product ---------------- */
+.update {
+  background-image: url("../../images/mostly-blue-tiles.jpg");
+  background-size: 1500px 1000px;
+}
+/* --------------- End of Login ---------------- */
+/* END PAGE */
+
+/* PAGE */
+/* --------------- Create Product ---------------- */
 .remove {
   color: red; 
   font-weight: bold; 
