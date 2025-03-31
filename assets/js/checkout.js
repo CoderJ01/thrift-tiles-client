@@ -1,6 +1,6 @@
 // file imports
 import Cookie from '../../utils/cookie.js';
-import { backendURL } from '../../utils/url.js';
+import { frontendURL, backendURL } from '../../utils/url.js';
 
 const checkoutItems = document.querySelector(".checkout-items");
 const itemsInCart = localStorage.getItem("cart");
@@ -27,13 +27,20 @@ div.innerHTML = result + `<div class="checkout-total">Total: $${total}</div>`;
 checkoutItems.appendChild(div);
 
 purchase.addEventListener("click", event => {
+    event.preventDefault();
+
     // prevent purchase if no user is logged
     if(Cookie.checkCookie() == null || Cookie.checkCookie == undefined || Cookie.checkCookie == '') {
-        alert('No user is logged on!');
+        alert('No user is logged on! You will be redirected to the login page!');
+        window.location.href = `${frontendURL}/login.html`;
         return;
     }
 
-    event.preventDefault();
+    if(total === 0) {
+        alert('You have no items in the cart! You will be redirected to the homepage!');
+        window.location.href = `${frontendURL}/index.html`;
+        return;
+    }
 
     axios.post(`${backendURL}/api/payment/purchase`, {
         items: JSON.parse(itemsInCart),
