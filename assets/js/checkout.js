@@ -36,6 +36,7 @@ purchase.addEventListener("click", event => {
         return;
     }
 
+    // prevent purchase if no items are in cart
     if(total === 0) {
         alert('You have no items in the cart! You will be redirected to the homepage!');
         window.location.href = `${frontendURL}/index.html`;
