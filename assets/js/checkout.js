@@ -19,7 +19,7 @@ JSON.parse(itemsInCart).forEach(item => {
         </div>
     </div>
     `;
-    total += item.cost;
+    total += (item.cost * item.amount);
 });
 const div = document.createElement("div");
 div.innerHTML = result + `<div class="checkout-total">Total: $${total}</div>`;
