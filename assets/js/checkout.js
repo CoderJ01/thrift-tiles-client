@@ -9,7 +9,6 @@ const purchase = document.querySelector("#purchase-items");
 let result = "";
 let total = 0;
 JSON.parse(itemsInCart).forEach(item => {
-    console.log(item);
     result +=
     `<div class="cart-item checkout-item">
         <img src=${item.image} alt="product">
