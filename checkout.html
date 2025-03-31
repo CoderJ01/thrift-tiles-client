@@ -15,6 +15,18 @@
             if(Cookie.checkCookie() == null || Cookie.checkCookie() == undefined || Cookie.checkCookie() == '') {
                 window.location.href = `${frontendURL}/index.html`;
             }
+
+            let cart = localStorage.getItem("cart");
+            let total = 0;
+            JSON.parse(cart).forEach(item => {
+                total = total + item.amount;
+            });
+
+            // if no items are in cart, redirect user to homepage
+            if(total === 0) {
+                alert('You have no items in the cart! You will be redirected to the homepage!');
+                window.location.href = `${frontendURL}/index.html`;
+            }
         </script>
     </head>
     <body class="signup login update checkout">
