@@ -48,6 +48,7 @@ purchase.addEventListener("click", event => {
     })
     .then(response => {
         console.log(response);
+        window.location.href = response.data.link;
     })
     .then(error => {
         console.log(error);
