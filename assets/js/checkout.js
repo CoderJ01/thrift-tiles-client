@@ -3,18 +3,20 @@ import Cookie from '../../utils/cookie.js';
 import { backendURL } from '../../utils/url.js';
 
 const checkoutItems = document.querySelector(".checkout-items");
-const itemsInCart = localStorage.getItem("cartItems");
+const itemsInCart = localStorage.getItem("cart");
 const purchase = document.querySelector("#purchase-items");
 
 let result = "";
 let total = 0;
 JSON.parse(itemsInCart).forEach(item => {
+    console.log(item);
     result +=
     `<div class="cart-item checkout-item">
         <img src=${item.image} alt="product">
         <div>
             <h4 style="font-weight: bold">${item.name}</h4>
             <h5>$${item.cost}</h5>
+            <h6>Amount: ${item.amount}</h6>
         </div>
     </div>
     `;
