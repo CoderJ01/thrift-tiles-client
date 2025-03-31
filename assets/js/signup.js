@@ -109,24 +109,18 @@ document.querySelector('#signup-form').addEventListener('submit', function(event
         return;
     }
 
-    axios.post(`${backendURL}/api/users/register`, 
-        {
-            firstname: firstName,
-            lastname: lastName,
-            email: email,
-            password: password,
+    axios.post(`${backendURL}/api/users/register`, {
+        firstname: firstName,
+        lastname: lastName,
+        email: email,
+        password: password,
+    })
+    .then(
+        response => {
+            errorMessage.innerHTML = `<text style="color: blue; font-weight: bold">${response.data.msg}</text><br><br>`;   
         }, 
-        {
-            withCredentials: true,
-            credentials: 'include'
+        error => {
+            errorMessage.innerHTML = `<text style="color: red; font-weight: bold">${error.response.data.msg}</text><br><br>`;   
         }
-        )
-        .then(
-            response => {
-                errorMessage.innerHTML = `<text style="color: blue; font-weight: bold">${response.data.msg}</text><br><br>`;   
-            }, 
-            error => {
-                errorMessage.innerHTML = `<text style="color: red; font-weight: bold">${error.response.data.msg}</text><br><br>`;   
-            }
-        );
+    );
 });
