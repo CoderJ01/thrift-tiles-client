@@ -472,12 +472,12 @@ input {
 /* END PAGE */
 
 /* PAGE */
-/* --------------- Create Product ---------------- */
+/* --------------- Update ---------------- */
 .update {
   background-image: url("../../images/mostly-blue-tiles.jpg");
   background-size: 1500px 1000px;
 }
-/* --------------- End of Login ---------------- */
+/* --------------- End of Update ---------------- */
 /* END PAGE */
 
 /* PAGE */
@@ -508,24 +508,18 @@ input {
 }
 
 .checkout-items {
-  background-color: white;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   padding-bottom: 3vh;
 }
 
-#checkout-form button img {
-  width: 10%;
-}
-
 .checkout {
-  background-image: url("../../images/interior-tiles.jpg");
+  background-image: url("../../images/tiny-gray-tiles.jpg");
   background-position: top;
   background-size: 1375px 1000px;
   padding-bottom: 5vh;
 }
 
 .checkout-item {
-  background-color: #C0C0C0;
   box-shadow: rgba(0, 48, 135, 0.25) 0px 13px 27px -5px, rgba(0, 48, 135, 0.3) 0px 8px 16px -8px;
   margin-left: 5%;
   padding: 10px;
@@ -533,8 +527,7 @@ input {
 }
 
 .checkout-total {
-  color: #003087;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: bold; 
   text-align: center
 }
@@ -575,7 +568,16 @@ input {
   }
 
   .checkout-items {
+    background-color: #C0C0C0;;
     width: 35%;
+  }
+
+  .checkout-item {
+    background-color: white;
+  }
+  
+  .checkout-total {
+    color: black;
   }
   
   #checkout-form {
@@ -595,18 +597,31 @@ input {
 
 /* mobile */
 @media screen and (max-width: 980px) {
+  .checkout {
+    background-size: 1160px 950px;
+  }
   .checkout-items {
+    background-color: white;
     margin-left: 3%;
     margin-top: 4vh;
     padding: 2vh 2vh;
     width: 94%;
   }
+
+  .checkout-item {
+    background-color: #C0C0C0;
+  }
+
+  .checkout-total {
+    color: #003087;
+  }
+
   #checkout-form {
     margin-top: 2vh;
   }
   #checkout-form button {
-    margin-left: 10%;
-    width: 80%;
+    margin-left: 5%;
+    width: 90%;
   }
 }
 /* --------------- End of Checkout ---------------- */
