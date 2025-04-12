@@ -14,7 +14,8 @@ const cartContent = document.querySelector(".cart-content");
 const productsDOM = document.querySelector(".products-center");
 const ourProducts = document.querySelector("#our-products");
 const navigation = document.querySelector(".navigation");
-const navbar = document.querySelector(".navbar");
+const defaultNavbar = document.querySelector(".nav-no-user");
+const secondNavbar = document.querySelector(".nav-with-user");
 const logout = document.querySelector("#signout");
 const mobileLogout = document.querySelector("#mb-signout");
 const yourCartHeading = document.querySelector(".your-cart");
@@ -59,41 +60,11 @@ const getUser = async () => {
     .then(response => {
         user = response.data.data;
       
-        // alter navigation if user is not logged on (i.e. there is no cookie)
-        if(user == null || user == undefined || user == '') {
-            navigation.removeChild(navbar);
-            let defaultNav = document.createElement('nav');
-            navigation.appendChild(defaultNav);
-            defaultNav.innerHTML = 
-            `<nav class="nav-signup">
-                <div class="nav-center-signup">
-                    <!-- placeholder section to even out spacing of header contents -->
-                    <div class="cart-btn useless-button">
-                        <span clas="nav-icon">
-                            <a class="signup-instead" href="">Login</a>
-                        </span>
-                    </div>
-                    <!-- placeholder end -->
-                    <img src="images/Thrift-Tiles-logo.png" alt="Thrift Tiles logo">
-                    <div class="cart-btn signup-area">
-                        <span class="nav-icon">
-                            <a class="signup-instead" href="login.html">Login</a>
-                        </span>
-                    </div>
-                </div>
-            </nav>`;
-        }
-        else {
+        // alter navigation if user is logged on (i.e. cookie is in browser)
+        if(user != null && user != undefined && user != '') {
+            defaultNavbar.style.display = 'none';
+            secondNavbar.style.display = 'block';
             yourCartHeading.innerHTML = `Your Cart - user <em>${user.username}</em>`;
-            if(user.admin === true && user.master_admin === true) {
-
-            }
-            else if(user.admin === true && user.master_admin !== true) {
-
-            }
-            else if(user.admin !== true && user.master_admin !== true) {
-           
-            }
         }
     })
     .then(error => {
