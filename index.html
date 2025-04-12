@@ -10,7 +10,10 @@
         <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0/dist/js.cookie.min.js"></script>
     </head>
     <body>
-        <div class="navigation">
+        <!-- This is the navigation bar displayed when a user is logged into the site -->
+        <!-- by default, it is NOT displayed, hence style="display: none;"-->
+        <!-- it is displayed via secondNavbar.style.display = 'block' in index.js file -->
+        <div class="navigation nav-with-user" style="display: none;">
             <nav class="navbar">
                 <div class="navbar-center">
                     <text id="signout" class="signup-instead logout ">Logout</text>
@@ -25,6 +28,29 @@
                 </div>
             </nav>
         </div>
+
+        <!-- This is the navigation bar that is displayed by default -->
+        <!-- It is removed when a user logs in -->
+        <div class="navigation nav-no-user">
+            <nav class="nav-signup">
+                <div class="nav-center-signup">
+                    <!-- placeholder section to even out spacing of header contents -->
+                    <div class="cart-btn useless-button">
+                        <span clas="nav-icon">
+                            <a class="signup-instead" href="">Login</a>
+                        </span>
+                    </div>
+                    <!-- placeholder end -->
+                    <img src="images/Thrift-Tiles-logo.png" alt="Thrift Tiles logo">
+                    <div class="cart-btn signup-area">
+                        <span class="nav-icon">
+                            <a class="signup-instead" href="login.html">Login</a>
+                        </span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        
         <header class="hero">
             <div class="banner">
                 <h1 class="banner-title">tile collection</h1>
