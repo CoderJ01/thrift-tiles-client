@@ -188,6 +188,12 @@ body {
   margin-top: 0.7rem;
   text-align: center;
 }
+/* mobile */
+@media screen and (max-width: 980px) {
+  .bag-btn {
+    color: black;
+  }
+}
 
 /* ---------------End of Products ---------------- */
 /* --------------- Cart ---------------- */
@@ -364,6 +370,7 @@ input {
   background: linear-gradient(90deg, rgba(82,166,249,1) 0%, rgba(234,236,238,1) 50%, rgba(82,166,249,1) 100%);
   border: transparent;
   border-radius: 10px;
+  color: black;
   font-weight: bold;
   margin-left: 35%;
   padding: 10px;
