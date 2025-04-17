@@ -87,7 +87,7 @@ class Products {
                 const image = item.image;
                 return {id, name, cost, image};
             });
-            return products;
+            return products.sort((a, b) => a.name.localeCompare(b.name));
         }
         catch(error) {
             console.log(error);
