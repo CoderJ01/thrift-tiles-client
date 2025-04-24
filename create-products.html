@@ -12,10 +12,15 @@
             import Cookie from '../utils/cookie.js';
             import { frontendURL, backendURL } from '../utils/url.js';
 
+            // if there is no cookie, redirct to homepage
+            if(Cookie.checkCookie() == null || Cookie.checkCookie() == undefined || Cookie.checkCookie() == '') {
+                window.location.href = `${frontendURL}/index.html`;
+            }
+
             let userCookie = Cookie.checkCookie();
             const username = userCookie.substring(userCookie.indexOf('@')).substring(1);
             
-            // if user is not an administrator, redirect to the homepageS
+            // if user is not an administrator, redirect to the homepage
             const getUser = axios.get(`${backendURL}/api/users/name/${username}`)
             .then(response => {
                 if(response.data.admin !== true) {
