@@ -1,9 +1,9 @@
 # Thrift Tiles
 
 ## Built With
- • HTML
- • CSS
- • Vanilla JavaScript 
+ * HTML
+ * CSS
+ * Vanilla JavaScript 
 
 ## Website Link
 https://thrifttiles.com/
