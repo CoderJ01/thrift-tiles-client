@@ -633,3 +633,25 @@ input {
 }
 /* --------------- End of Checkout ---------------- */
 /* END PAGE */
+
+/* LOGO */
+
+/* desktop */
+@media screen and (min-width: 981px) {
+  .logo {
+    visibility: hidden;
+  }
+}
+
+/* mobile */
+@media screen and (max-width: 980px) {
+  .logo {
+    display: none;
+  }
+
+  nav {
+    margin-top: -10px;
+  }
+}
+
+/* END LOGO */
