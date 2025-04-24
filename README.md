@@ -1,6 +1,6 @@
 # Thrift Tiles
 
-# Built With
+## Built With
  • HTML
  • CSS
  • Vanilla JavaScript 
