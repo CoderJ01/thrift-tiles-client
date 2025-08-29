@@ -6,7 +6,7 @@
  * Vanilla JavaScript 
 
 ## Website Link
-https://thrifttiles.com/
+https://thrift-tiles-client.onrender.com/
 
 ## Backend
 https://github.com/CoderJ01/thrift-tiles-server
